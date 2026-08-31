@@ -22,3 +22,7 @@ jobs:
       
       - name: Run pytest
         run: pytest
+
+      - name: Failure Log
+        if: failure()
+        run: echo 'Prevous one is failed'
