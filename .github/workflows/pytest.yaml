@@ -22,3 +22,14 @@ jobs:
       
       - name: Run pytest
         run: pytest
+
+      - name: Failure Log
+        if: failure()
+        run: echo 'Prevous one is failed'
+      
+      - name: Get time
+        id: get_time
+        run: echo "time=$(date)" >> $GITHUB_OUTPUT
+
+      - name: Print github GIITHUB_OUTPUT
+        run: echo Previous one is ${{ steps.get_time.outputs.time}}
